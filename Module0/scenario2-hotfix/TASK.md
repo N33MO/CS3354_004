@@ -6,15 +6,21 @@
 
 ## Context
 
+**How this project releases:** `dev` is the integration branch where everyday
+work happens. At each release, `dev` is merged into `prod` and tagged — that's
+how `v0.4` got there. `prod` is what customers are running right now.
+
 QA reports that `BinarySearch.search()` sometimes fails to find a value that
 **is** in the array — specifically when the target turns out to be the last
 remaining candidate the search narrows down to (e.g. searching for the
 maximum value in the array). This regressed in `v0.3` ("optimize loop
-bounds") and is still present in the current prod release, `v0.4`.
+bounds") and shipped again in `v0.4`, so it is live in production today.
 
-Meanwhile, `dev` has diverged and is working toward `v0.5`. It branched off
-after the bug was introduced, so it also contains the bug, plus unrelated
-new work (`interpolationSearch`, plus some debug logging in `search()`).
+Since that release, `dev` has moved on toward `v0.5`: Robin added
+`interpolationSearch` and some debug logging. Note that `dev` still carries
+the same bug — and someone left a `// TODO` on the exact line that's broken.
+
+Run `git log --all --oneline --graph` before you start to see the shape of it.
 
 ## Your task
 
