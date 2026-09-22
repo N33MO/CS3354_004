@@ -21,26 +21,38 @@ your working copy; `git pull` downloads and merges in one step.
 
 ## Compiling and running an example
 
-Most examples are plain Java files you can compile and run directly:
+Each file declares a package matching its folder path, so compile and run from
+the **repository root** — not from inside the example's folder:
 
 ```bash
-cd <folder_containing_the_example>
+# Compile — pass the path to the .java file:
+javac Module1/JavaProgramExample/FirstExample.java
 
-# Compile the class that has the main method (e.g. Main.java):
-javac Main.java
-
-# Run it (note: no .java extension):
-java Main
+# Run — use the full class name with dots, and no .java extension:
+java Module1.JavaProgramExample.FirstExample
 ```
 
-Examples that use a `src/` folder layout include their own README with specific
-build instructions.
+To keep the generated `.class` files out of the source folders, send them to a
+build directory instead:
+
+```bash
+javac -d out Module1/JavaProgramExample/FirstExample.java
+java -cp out Module1.JavaProgramExample.FirstExample
+```
+
+> If you `cd` into the example's folder first, `java` will fail with
+> *"Could not find or load main class"* — the package name has to match the
+> directory you run it from, which is the repository root.
+
+Examples that use their own `src/` layout include a README with specific build
+instructions.
 
 ## Contents
 
 | Folder | Topic |
 |---|---|
 | `Module0/` | Git practice — rebasing, hotfix releases, and undoing unwanted commits |
+| `Module1/` | Java basics — classes, constructors, methods, arrays, console and file I/O |
 
 Additional modules are published here throughout the semester.
 
