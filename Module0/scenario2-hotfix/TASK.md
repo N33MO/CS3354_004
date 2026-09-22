@@ -22,10 +22,44 @@ the same bug — and someone left a `// TODO` on the exact line that's broken.
 
 Run `git log --all --oneline --graph` before you start to see the shape of it.
 
+## Your task
+
+1. Branch a hotfix off `prod` (currently at `v0.4`).
+2. Fix the bug in `BinarySearch.search()`.
+3. Verify the fix: searching for the maximum value in the demo array in
+   `Main.java` should now return its correct index instead of `-1`.
+4. Ship the fix to `prod` as **`v0.4.1`** (tag it) as fast as possible.
+5. Make sure the fix also lands on `dev`, so `v0.5` doesn't reintroduce the
+   bug. Expect a small conflict here — `dev` already touched the same line.
+
+## Acceptance criteria
+
+- `prod` is tagged `v0.4.1` and contains the fix.
+- `dev` contains the fix, `interpolationSearch`, and the debug logging —
+  nothing was dropped or overwritten while resolving the conflict.
+- `javac -d out $(find src -name "*.java") && java -cp out algotoolkit.Main`
+  succeeds on both branches.
+
+## Setup
+
+After cloning, `dev` is only available as `origin/dev` (you're on `prod`).
+Give yourself a local copy of it when you're ready for step 5:
+
+```
+git branch dev origin/dev
+```
+
+---
+
+# Solution
+
+*Try the task yourself first — the whole point is getting stuck and working
+through it. Use this when you want to check your approach or get unstuck.*
+
 ## The fix
 
-This exercise is about the Git workflow, not about hunting the bug down — so
-here is the fix. In `src/algotoolkit/BinarySearch.java`, inside `search()`:
+This exercise is about the Git workflow, not about hunting the bug down. In
+`src/algotoolkit/BinarySearch.java`, inside `search()`:
 
 ```java
 // before — stops before checking the final candidate
@@ -39,7 +73,7 @@ Why it matters: once `low` and `high` converge on a single remaining index,
 `low < high` is already false, so that last element is never compared. Searching
 for `91` — the largest value in the demo array — returns `-1` instead of `10`.
 
-## Workflow
+## Step by step
 
 ```bash
 # 0. get your bearings
@@ -62,13 +96,13 @@ git merge --no-ff hotfix/binary-search-bounds
 git tag v0.4.1
 
 # 5. backport to dev so v0.5 doesn't ship the bug all over again
-git branch dev origin/dev        # first time only — see Setup below
+git branch dev origin/dev        # first time only — see Setup above
 git checkout dev
 git merge hotfix/binary-search-bounds
 #    -> CONFLICT in BinarySearch.java
 ```
 
-### Resolving the conflict in step 5
+## Resolving the conflict in step 5
 
 Git will show your fixed line against Robin's `TODO`-commented version:
 
@@ -100,20 +134,3 @@ person's work is the classic way to silently undo a teammate's changes.
   returns the moment `v0.5` ships from `dev`.
 - **Tag what you shipped.** `v0.4.1` marks the patch release, so later you can
   run `git diff v0.4 v0.4.1` and see exactly what changed in production.
-
-## Acceptance criteria
-
-- `prod` is tagged `v0.4.1` and contains the fix.
-- `dev` contains the fix, `interpolationSearch`, and the debug logging —
-  nothing was dropped or overwritten while resolving the conflict.
-- `javac -d out $(find src -name "*.java") && java -cp out algotoolkit.Main`
-  succeeds on both branches.
-
-## Setup
-
-After cloning, `dev` is only available as `origin/dev` (you're on `prod`).
-Give yourself a local copy of it when you're ready for step 5:
-
-```
-git branch dev origin/dev
-```
