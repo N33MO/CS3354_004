@@ -1,0 +1,7 @@
+.DS_Store
+*.class
+
+# Module0 git-practice repos are nested .git repos, distributed as .bundle
+# files (see Module0/README.md). Ignore the raw working copies so the outer
+# repo doesn't try to track them as broken gitlinks.
+Module0/*/algotoolkit/
