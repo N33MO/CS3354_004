@@ -22,15 +22,84 @@ the same bug — and someone left a `// TODO` on the exact line that's broken.
 
 Run `git log --all --oneline --graph` before you start to see the shape of it.
 
-## Your task
+## The fix
 
-1. Branch a hotfix off `prod` (currently at `v0.4`).
-2. Fix the bug in `BinarySearch.search()`.
-3. Verify the fix: searching for the maximum value in the demo array in
-   `Main.java` should now return its correct index instead of `-1`.
-4. Ship the fix to `prod` as **`v0.4.1`** (tag it) as fast as possible.
-5. Make sure the fix also lands on `dev`, so `v0.5` doesn't reintroduce the
-   bug. Expect a small conflict here — `dev` already touched the same line.
+This exercise is about the Git workflow, not about hunting the bug down — so
+here is the fix. In `src/algotoolkit/BinarySearch.java`, inside `search()`:
+
+```java
+// before — stops before checking the final candidate
+while (low < high) {
+
+// after
+while (low <= high) {
+```
+
+Why it matters: once `low` and `high` converge on a single remaining index,
+`low < high` is already false, so that last element is never compared. Searching
+for `91` — the largest value in the demo array — returns `-1` instead of `10`.
+
+## Workflow
+
+```bash
+# 0. get your bearings
+git log --all --oneline --graph
+
+# 1. branch the hotfix off the RELEASED code, not off dev
+git checkout prod
+git checkout -b hotfix/binary-search-bounds
+
+# 2. apply the one-line fix above, then prove it works
+javac -d out $(find src -name "*.java") && java -cp out algotoolkit.Main
+#    expect:  Searching for 91 -> index 10      (it was -1 before)
+
+# 3. commit it
+git commit -am "Fix binary search missing last remaining candidate"
+
+# 4. ship it to prod as v0.4.1
+git checkout prod
+git merge --no-ff hotfix/binary-search-bounds
+git tag v0.4.1
+
+# 5. backport to dev so v0.5 doesn't ship the bug all over again
+git branch dev origin/dev        # first time only — see Setup below
+git checkout dev
+git merge hotfix/binary-search-bounds
+#    -> CONFLICT in BinarySearch.java
+```
+
+### Resolving the conflict in step 5
+
+Git will show your fixed line against Robin's `TODO`-commented version:
+
+```java
+<<<<<<< HEAD
+        while (low < high) { // TODO: revisit once interpolation search lands
+=======
+        while (low <= high) {
+>>>>>>> hotfix/binary-search-bounds
+```
+
+Keep the fix and drop the stale `TODO` — it has now been dealt with. Delete all
+three marker lines, then mark it resolved and finish the merge:
+
+```bash
+git add src/algotoolkit/BinarySearch.java
+git commit
+```
+
+Before you commit, check that Robin's `interpolationSearch` method and debug
+logging are still in the file. Resolving a conflict by deleting the other
+person's work is the classic way to silently undo a teammate's changes.
+
+## Why this workflow
+
+- **Branch from `prod`, not `dev`.** Branching off `dev` would drag unreleased
+  `v0.5` work into a production release.
+- **A hotfix has to land in two places.** Fix only `prod` and the bug quietly
+  returns the moment `v0.5` ships from `dev`.
+- **Tag what you shipped.** `v0.4.1` marks the patch release, so later you can
+  run `git diff v0.4 v0.4.1` and see exactly what changed in production.
 
 ## Acceptance criteria
 
