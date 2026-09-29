@@ -52,7 +52,7 @@ instructions.
 | Folder | Topic |
 |---|---|
 | `Module0/` | Git practice — rebasing, hotfix releases, and undoing unwanted commits |
-| `Module1/` | Java basics — classes, constructors, methods, arrays, console and file I/O |
+| `Module1/` | Java basics — classes, constructors, methods, arrays, I/O, and exception handling |
 
 Additional modules are published here throughout the semester.
 
