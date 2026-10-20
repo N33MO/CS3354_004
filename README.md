@@ -53,7 +53,7 @@ instructions.
 |---|---|
 | `Module0/` | Git practice — rebasing, hotfix releases, and undoing unwanted commits |
 | `Module1/` | Java basics — classes, constructors, methods, arrays, I/O, and exception handling |
-| `Module2/` | Object-oriented design — encapsulation, inheritance, abstraction, and polymorphism |
+| `Module2/` | Object-oriented design — encapsulation, inheritance, abstraction, polymorphism, and interfaces |
 
 Additional modules are published here throughout the semester.
 
