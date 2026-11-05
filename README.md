@@ -55,7 +55,7 @@ instructions.
 | `Module1/` | Java basics — classes, constructors, methods, arrays, I/O, and exception handling |
 | `Module2/` | Object-oriented design — encapsulation, inheritance, abstraction, polymorphism, and interfaces |
 | `Module3/` | UML class diagrams — association, aggregation, composition, dependency, generalization, and realization |
-| `Module4/` | Swing GUIs — top-level windows, containers, components, and layout managers |
+| `Module4/` | Swing GUIs — top-level windows, containers, components, layout managers, and event handling |
 
 Additional modules are published here throughout the semester.
 

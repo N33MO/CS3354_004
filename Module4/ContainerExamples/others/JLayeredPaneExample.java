@@ -24,6 +24,8 @@ public class JLayeredPaneExample {
         // bottom.setForeground(Color.WHITE);
         bottom.setBounds(150, 150, 100, 100);
 
+        bottom.addActionListener(e -> JOptionPane.showMessageDialog(frame, "Button clicked!"));
+
         //Add buttons to the JLayeredPane
         layeredPane.add(bottom, JLayeredPane.DEFAULT_LAYER);
         layeredPane.add(middle, JLayeredPane.PALETTE_LAYER);

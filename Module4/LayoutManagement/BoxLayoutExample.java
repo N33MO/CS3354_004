@@ -21,15 +21,15 @@ public class BoxLayoutExample {
 
         // Adding buttons to the frame container
         frame.add(button1);
-        frame.add(Box.createHorizontalStrut(15));
         frame.add(button2);
         frame.add(button3);
         frame.add(button4);
         frame.add(button5);
-
+        
         // // Adding a vertical strut for a bit of space between the buttons
-        frame.add(Box.createVerticalStrut(5));
-        frame.add(Box.createHorizontalStrut(5));
+        // frame.add(Box.createVerticalStrut(15));
+        // frame.add(Box.createVerticalStrut(5));
+        // frame.add(Box.createVerticalStrut(5));
 
         // Packing the frame to the preferred sizes of components
         frame.pack();

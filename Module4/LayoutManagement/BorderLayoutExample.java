@@ -8,7 +8,7 @@ public class BorderLayoutExample {
         // Creating instance of JFrame
         JFrame frame = new JFrame("BorderLayout Example");
 
-        frame.setSize(100, 100);
+        frame.setSize(800, 600);
         
         // Setting the layout manager to BorderLayout
         frame.setLayout(new BorderLayout(1, 15));
