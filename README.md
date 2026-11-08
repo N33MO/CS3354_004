@@ -56,6 +56,7 @@ instructions.
 | `Module2/` | Object-oriented design — encapsulation, inheritance, abstraction, polymorphism, and interfaces |
 | `Module3/` | UML class diagrams — association, aggregation, composition, dependency, generalization, and realization |
 | `Module4/` | Swing GUIs — top-level windows, containers, components, layout managers, and event handling |
+| `Module5/` | Design patterns — the Strategy pattern |
 | `ProjectMaterial/` | Starter code for the course project |
 
 Additional modules are published here throughout the semester.
