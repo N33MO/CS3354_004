@@ -47,6 +47,9 @@ java -cp out Module1.JavaProgramExample.FirstExample
 Examples that use their own `src/` layout include a README with specific build
 instructions.
 
+One exception: `Module5/solid/` holds before-and-after reading examples that are
+not meant to compile. See `Module5/solid/README.md`.
+
 ## Contents
 
 | Folder | Topic |
@@ -56,7 +59,7 @@ instructions.
 | `Module2/` | Object-oriented design — encapsulation, inheritance, abstraction, polymorphism, and interfaces |
 | `Module3/` | UML class diagrams — association, aggregation, composition, dependency, generalization, and realization |
 | `Module4/` | Swing GUIs — top-level windows, containers, components, layout managers, and event handling |
-| `Module5/` | Design patterns — the Strategy pattern |
+| `Module5/` | Design patterns — the Strategy pattern; plus the SOLID principles as reading examples (see `Module5/solid/README.md`) |
 | `ProjectMaterial/` | Starter code for the course project |
 
 Additional modules are published here throughout the semester.
