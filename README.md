@@ -59,7 +59,7 @@ not meant to compile. See `Module5/solid/README.md`.
 | `Module2/` | Object-oriented design — encapsulation, inheritance, abstraction, polymorphism, and interfaces |
 | `Module3/` | UML class diagrams — association, aggregation, composition, dependency, generalization, and realization |
 | `Module4/` | Swing GUIs — top-level windows, containers, components, layout managers, and event handling |
-| `Module5/` | Design patterns — Strategy, Singleton, and Observer; plus the SOLID principles as reading examples (see `Module5/solid/README.md`) |
+| `Module5/` | Design patterns — Strategy, Singleton, Observer, and Decorator; plus the SOLID principles as reading examples (see `Module5/solid/README.md`) |
 | `ProjectMaterial/` | Starter code for the course project |
 
 Additional modules are published here throughout the semester.
