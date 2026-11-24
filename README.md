@@ -60,7 +60,9 @@ not meant to compile. See `Module5/solid/README.md`.
 | `Module3/` | UML class diagrams — association, aggregation, composition, dependency, generalization, and realization |
 | `Module4/` | Swing GUIs — top-level windows, containers, components, layout managers, and event handling |
 | `Module5/` | Design patterns — Strategy, Singleton, Observer, and Decorator; plus the SOLID principles as reading examples (see `Module5/solid/README.md`) |
+| `Module6/` | Unit testing with JUnit — assertions, annotations, and the test lifecycle (open this folder as its own project; see `Module6/README.md`) |
 | `ProjectMaterial/` | Starter code for the course project |
+| `README_Demo/` | An example README showing the structure to use for your project submission |
 
 Additional modules are published here throughout the semester.
 
